@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+            {% block content %}
+            <form action="" method="POST" novalidate>
+                <div>
+                    {{ formulario.hidden_tag() }}
+                    {{ formulario.terminoBusqueda.label }}
+                    {{ formulario.terminoBusqueda(size=64) }}<br>
+                    {% for error in formulario.terminoBusqueda.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ formulario.enviar }}
+                </div>
+
+            </form>
+                {% for entidad in entidades %}
+                    <div>
+                        <h4>{{ entidad[1] }}</h4>
+                        <p>
+                            <b>Descripción</b><br>
+                            {% if entidad[2] == "" %}
+                                <i>No hay Descripción.</i>
+                            {% else %}
+                                {{ entidad[2] }}
+                            {% endif %}
+                        </p>
+                        <p>
+                            <b>Servicios</b><br>
+                            {% if entidad[3] == "" %}
+                                <i>No hay información.</i>
+                            {% else %}
+                                {{ entidad[3] }}
+                            {% endif %}
+                        </p>
+                        
+                        <p>        
+                            <a href="https://www.google.es/maps/place/"
+                            target="_blank"
+                            title="Ver en Google Maps" rel="noopener noreferrer">
+                                <b>Ver en Google Maps</b>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="{{ entidad[5] }}" target="_blank" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                                <b>Más información</b>
+                            </a>
+                        </p>
+                    </div>
+                {% endfor %}
+            {% endblock %}           
