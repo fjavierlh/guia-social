@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            {% block content %} {% endblock %}
+            {% for entidad in datos["@graph"] %}
+                <div>
+                    <h4>{{entidad["title"]}}</h4>
+                    <p>
+                        <b>Descripción</b><br>
+                        {% if entidad["organization"]["organization-desc"] == "" %}
+                            <i>No hay Descripción.</i>
+                        {% else %}
+                            {{ entidad["organization"]["organization-desc"] }}
+                        {% endif %}
+                    </p>
+                    <p>
+                        <b>Servicios</b><br>
+                        {% if entidad["organization"]["services"] == "" %}
+                            <i>No hay información.</i>
+                        {% else %}
+                            {{ entidad["organization"]["services"] }}
+                        {% endif %}
+                    </p>
+                    
+                    <p>        
+                        <a href="https://www.google.es/maps/place/{% if entidad['location'] %}{{ entidad.location.latitude }},{{ entidad.location.longitude }}{% endif %}"
+                           target="_blank"
+                           title="Ver en Google Maps" rel="noopener noreferrer">
+                            <b>Ver en Google Maps</b>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="{{ entidad['relation'] }}" target="_blank" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                            <b>Más información</b>
+                        </a>
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    </body>
+</html>
