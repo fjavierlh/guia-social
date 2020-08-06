@@ -1,47 +1,21 @@
-import urllib.request, json
-import os
+import logSystem
 
-with urllib.request.urlopen("https://datos.madrid.es/egob/catalogo/212774-0-atencion-social.json") as url:
-    data = json.loads(url.read().decode())
+from apiBrowser import ApiBrowser
 
-if not os.path.exists("centros_atencion_social.json"):
-    print("Cargando datos, esto puede tardar un poco.")
+from flask import Flask, render_template
 
-    with open("centros_atencion_social.json", "w") as ficheroJSON:
-        json.dump(data, ficheroJSON, indent=4);
+from flask_sqlalchemy import Pagination
 
-    print("Datos descargados con éxito :)")
+app = Flask(__name__)
 
-input("Pulsa 'Enter' para continuar");
+guiaSocial = ApiBrowser("https://datos.madrid.es/egob/catalogo/212774-0-atencion-social.json", "centros_atencion_social.json");
 
-with open("centros_atencion_social.json", "r") as ficheroJSON:
-    contenido = json.load(ficheroJSON);
-    
+guiaSocial.obtenerDatos();
 
-def mostrarTodo():
-    salida = ""
-    for entidad in contenido["@graph"]: 
-        try:
-            salida += "Nombre: {}\n".format(entidad["title"])
-            salida += "Descripción: {}\n".format(entidad["organization"]["organization-desc"])
-            salida += "Servicios: {}\n".format(entidad["organization"]["services"])
-            salida += "Más información: {}\n".format(entidad["relation"])
+guiaSocial.guardarDatosEnLocal("centros_atencion_social.json", "w");
 
-            distrito = entidad["address"]["district"]["@id"].rsplit("/", 1)
-            salida += "Distrito: {}".format(distrito[-1])
-
-            barrio = entidad["address"]["area"]["@id"].rsplit("/", 1)
-            salida += " - Barrio: {}\n".format(barrio[-1])
-
-            salida += "Dirección: "
-            salida += "{}\n".format(entidad["address"]["street-address"])
-            salida += "{}\n".format(entidad["address"]["postal-code"])
-            salida += "{}\n".format(entidad["address"]["locality"])
-            salida += "\n"
-
-        except KeyError:
-            continue;
-
-    return salida;
-
-print(mostrarTodo());
+@app.route("/")
+@app.route("/page/<int:page>")
+def index():
+    #return render_template("index.html", datos=Pagination(guiaSocial.datos, 1, 15, 30,len(guiaSocial.datos.keys())))
+    return render_template("index.html", datos=guiaSocial.datos)
