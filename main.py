@@ -20,29 +20,35 @@ if not os.path.exists(nombreBD):
 else:
     logSystem.log("INFO", "Programa arrancado. No es necesario crear base de datos")
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
+@app.route("/resultado/", methods=["GET", "POST"])
 def index():
     page = request.args.get('page', 1)
     lista = request.args.get('list', 20)
-    entidades = guiaSocial.consultarDB("SELECT * FROM entidades")
-    return render_template("index.html", entidades=entidades)
 
-@app.route("/busqueda/", methods=["GET", "POST"])
-def busqueda():
     formulario = Busqueda()
     entidades = guiaSocial.consultarDB(f"SELECT * FROM entidades")
+    busqueda = ""
+    template = "index.html"
 
     if formulario.validate_on_submit():
         busqueda = formulario.terminoBusqueda.data
         busquedaFormateada = "%" + "{}".format(busqueda.replace(" ","%")) + "%"
         
-        entidades = guiaSocial.consultarDB(f"SELECT * FROM entidades WHERE nombre LIKE '{busquedaFormateada}'")
+        entidades = guiaSocial.consultarDB(f"""SELECT * FROM entidades
+        WHERE nombre LIKE '{busquedaFormateada}' OR descripcion LIKE '{busquedaFormateada}' OR servicios LIKE '{busquedaFormateada}'
+        OR distrito LIKE '{busquedaFormateada}' OR barrio LIKE '{busquedaFormateada}' OR horario LIKE '{busquedaFormateada}'
+        OR calleNumero LIKE '{busquedaFormateada}' OR codigoPostal LIKE '{busquedaFormateada}' OR municipio LIKE '{busquedaFormateada}'""")
+        
+        template = "resultado.html"
 
-    return render_template("busqueda.html", entidades=entidades, formulario=formulario)
+    return render_template(f"{template}", entidades=entidades, formulario=formulario, busqueda=busqueda)
 
-@app.route("/por-nombre/")
-def por_nombre():
 
-    entidades = guiaSocial.consultarDB("SELECT * FROM entidades ORDER BY nombre DESC")
+@app.route("/entidad/<nombre>/", methods=["GET", "POST"])
+def mostrarDetalle(nombre):
+    entidad = guiaSocial.consultarDB(f"SELECT * FROM entidades WHERE nombre = '{nombre}'")
+
+    coordenadas = eval(entidad[0][4])
     
-    return render_template("index.html", entidades=entidades)
+    return render_template("detalle.html", entidad=entidad, nombre=nombre, coordenadas=coordenadas, formulario = Busqueda())

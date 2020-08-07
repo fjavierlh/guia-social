@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+
+{% block title %}{{ entidad[0][1] }}{% endblock %}
+
+{% block content %}
+    {% if entidad %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>{{ entidad[0][1] }}</h4>
+                <p>
+                    <b>Descripción</b><br>
+                    {% if entidad[0][2] == "" %}
+                        <i>No hay Descripción.</i>
+                    {% else %}
+                        {{ entidad[0][2] }}
+                    {% endif %}
+                </p>
+                <p>
+                    <b>Servicios</b><br>
+                    {% if entidad[0][3] == "" %}
+                        <i>No hay información.</i>
+                    {% else %}
+                        {{ entidad[0][3] }}
+                    {% endif %}
+                </p>
+
+                <p>
+                    <b>Distrito: </b><br>
+                    {% if entidad[0][6] == "" %}
+                        <i>No hay información.</i>
+                    {% else %}
+                        {{ entidad[0][6] }}
+                    {% endif %}
+                </p>
+
+                <p>
+                    <b>Barrio: </b><br>
+                    {% if entidad[0][7] == "" %}
+                        <i>No hay información.</i>
+                    {% else %}
+                        {{ entidad[0][7] }}
+                    {% endif %}
+                </p>
+                <p>
+                    <b>Horario: </b><br>
+                    {% if entidad[0][8] == "" %}
+                        <i>No hay información.</i>
+                    {% else %}
+                        {{ entidad[0][8] }}
+                    {% endif %}
+                </p>
+                <p>
+                    <b>Dirección: </b><br>
+                    {% for dato in entidad[0][9:12] %}
+                        {% if dato == "" %}
+                            <i>No hay información.</i>
+                        {% else %}
+                            {{ dato }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <p class="mt-5">
+                    <a class="btn btn-primary" href="{{ entidad[0][5] }}" target="_blank" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                        <b>Más información de la entidad</b>
+                    </a>
+                </p>
+            </div>
+
+            <div class="col-sm-6">
+                <h5>Localización</h5>
+                <iframe
+                    width="600"
+                    height="450"
+                    frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB-NA3OXQbtCUixsipxpntunpupnHIkev4
+                        &q={{ coordenadas['latitude'] }},{{ coordenadas['longitude']}}" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <h2>No existe la entidad <i>'{{ nombre }}':</i></h2>
+    {% endif %}
+    </div>
+            
+{% endblock %}

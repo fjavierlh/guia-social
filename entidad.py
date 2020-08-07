@@ -12,6 +12,3 @@ class Entidad():
         self.calleNumero = calleNumero
         self.codigoPostal = codigoPostal
         self.municipio = municipio
-
-    def generarUrlGoogleMaps(self, latitud, longitud):
-        pass;
