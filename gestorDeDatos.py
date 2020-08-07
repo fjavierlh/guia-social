@@ -6,6 +6,7 @@ import os
 from config import nombreBD, esquemaDB
 
 from entidad import Entidad
+from usuario import Usuario
 
 import logSystem
 
@@ -80,3 +81,10 @@ class GestorDeDatos():
                 logSystem.log("INFO",f"{KeyError}");
                 continue;
         return logSystem.log("INFO","Entidades creadas con éxito")
+    
+    def getUsuario(self, correoElectronico):
+        usuario = self.consultarDB(f'SELECT * FROM usuarios WHERE correoElectronico = "{ correoElectronico };"')
+        if usuario:
+            return usuario
+        else:
+            return None

@@ -11,7 +11,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div>
-            <a class="navbar-brand d-block pt-3 pb-0 mr-5 text-right" style="line-height:1em" href="/">
+            <a class="navbar-brand d-block pt-3 pb-0 mr-5 text-right" style="line-height:1em" href="{{ url_for('index')}}">
                 Guía Social Madrid <br>
                 <small id="subtitle" class="text-muted" style="font-size: 60%;">
                     Version Beta
@@ -25,11 +25,11 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{{ url_for('acceso')}}">Iniciar sesión <span class="sr-only">(current)</span></a>
                 </li>
               </ul>
               
-              <form class="form-inline" action="/resultado/" method="POST" novalidate>
+              <form class="form-inline" action="{{ url_for('index')}}" method="POST" novalidate>
                 {{ formulario.hidden_tag() }}
                 <div>
                 {{ formulario.terminoBusqueda(class_="form-control mr-sm-2") }}
@@ -85,7 +85,7 @@
                         {% for entidad in entidades %}
                         
                             <div class="col-sm-6 mb-5">
-                            <a href="/entidad/{{ entidad[1] }}"><h4>{{ entidad[1] }}</h4></a>
+                            <a href="{{ url_for('mostrarDetalle', nombre=entidad[1])}}"><h4>{{ entidad[1] }}</h4></a>
                             <p class="d-inline-block mr-3">
                                 <b>Barrio:</b>
                                 {% if entidad[6] == "" %}
@@ -104,7 +104,7 @@
                             </p>
                         
                             <p>
-                                <a class="btn btn-primary" href="/entidad/{{ entidad[1] }}" target="" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                                <a class="btn btn-primary" href="{{ url_for('mostrarDetalle', nombre=entidad[1])}}" target="" title="{{ entidad['title'] }}" rel="noopener noreferrer">
                                     <b>Más información</b>
                                 </a>
                             </p>
