@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+            {% block content %}
+                {% if entidades %}
+                <h2>Resultado de la búsqueda <i>'{{ busqueda }}':</i></h2>
+                <div class="row mt-5">
+                    {% for entidad in entidades %}
+                    
+                        <div class="col-sm-6 mb-5">
+                        <a href="/entidad/{{ entidad[1] }}"><h4>{{ entidad[1] }}</h4></a>
+                        <p class="d-inline-block mr-3">
+                            <b>Distrito:</b>
+                            {% if entidad[6] == "" %}
+                                <i>No hay información.</i>
+                            {% else %}
+                                {{ entidad[6] }}
+                            {% endif %}
+                        </p>
+                        <p class="d-inline-block"> 
+                            <b>Barrio:</b>
+                            {% if entidad[7] == "" %}
+                                <i>No hay información.</i>
+                            {% else %}
+                                {{ entidad[7] }}
+                            {% endif %}
+                        </p>
+                    
+                        <p>
+                            <a class="btn btn-primary" href="/entidad/{{ entidad[1] }}" target="_blank" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                                <b>Más información</b>
+                            </a>
+                        </p>
+                        </div>
+                    
+                    {% endfor %}
+                </div>
+                {% else %}
+                    <h2>No hay resultados para la búsqueda <i>'{{ busqueda }}':</i></h2>
+                {% endif %}
+            {% endblock %}           

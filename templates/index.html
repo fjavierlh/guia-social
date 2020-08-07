@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}Guia Social Madrid{% endblock %}</title>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- CSS -->
@@ -10,24 +10,41 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Guía Social</a>
+          <div>
+            <a class="navbar-brand d-block pt-3 pb-0 mr-5 text-right" style="line-height:1em" href="/">
+                Guía Social Madrid <br>
+                <small id="subtitle" class="text-muted" style="font-size: 60%;">
+                    Version Beta
+                </small>
+            </a>
+          </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
+            </div> 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                   <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/busqueda/">Búsqueda</a>
-                </li>
               </ul>
+              
+              <form class="form-inline" action="/resultado/" method="POST" novalidate>
+                {{ formulario.hidden_tag() }}
+                <div>
+                {{ formulario.terminoBusqueda(class_="form-control mr-sm-2") }}
+                {% for error in formulario.terminoBusqueda.errors %}
+                <small id="searchHelpInline" class="text-muted d-block">
+
+                    {{ error }}
+                </small>
+            </div>
+                {% endfor %}
+                {{ formulario.buscar(class_="btn btn-outline-success my-2 my-sm-0") }}
+              </form>
             </div>
         </nav>
-        <div class="container">
-            
-
+        <div class="container mt-5">
             {% block content %}
             <div class="jumbotron">
                 <h1 class="display-4">Bienvenid@ a Guía Social</h1>
@@ -63,41 +80,41 @@
             <hr class="my-4">
             <div class="container">
                 <div class="row">
-                {% for entidad in entidades %}
-                    
-                        <div class="col-sm-6">
-                        <h4>{{ entidad[1] }}</h4>
-                        <p>
-                            <b>Descripción</b><br>
-                            {% if entidad[2] == "" %}
-                                <i>No hay Descripción.</i>
-                            {% else %}
-                                {{ entidad[2] }}
-                            {% endif %}
-                        </p>
-                        <p>
-                            <b>Servicios</b><br>
-                            {% if entidad[3] == "" %}
-                                <i>No hay información.</i>
-                            {% else %}
-                                {{ entidad[3] }}
-                            {% endif %}
-                        </p>
+                    {% if entidades %}
+                    <div class="row mt-5">
+                        {% for entidad in entidades %}
                         
-                        <p>        
-                            <a href="https://www.google.es/maps/place/"
-                            target="_blank"
-                            title="Ver en Google Maps" rel="noopener noreferrer">
-                                <b>Ver en Google Maps</b>
-                            </a>
-                        </p>
-                        <p>
-                            <a href="{{ entidad[5] }}" target="_blank" title="{{ entidad['title'] }}" rel="noopener noreferrer">
-                                <b>Más información</b>
-                            </a>
-                        </p>
-                        </div>
-                {% endfor %}
+                            <div class="col-sm-6 mb-5">
+                            <a href="/entidad/{{ entidad[1] }}"><h4>{{ entidad[1] }}</h4></a>
+                            <p class="d-inline-block mr-3">
+                                <b>Barrio:</b>
+                                {% if entidad[6] == "" %}
+                                    <i>No hay información.</i>
+                                {% else %}
+                                    {{ entidad[6] }}
+                                {% endif %}
+                            </p>
+                            <p class="d-inline-block"> 
+                                <b>Distrito:</b>
+                                {% if entidad[7] == "" %}
+                                    <i>No hay información.</i>
+                                {% else %}
+                                    {{ entidad[7] }}
+                                {% endif %}
+                            </p>
+                        
+                            <p>
+                                <a class="btn btn-primary" href="/entidad/{{ entidad[1] }}" target="" title="{{ entidad['title'] }}" rel="noopener noreferrer">
+                                    <b>Más información</b>
+                                </a>
+                            </p>
+                            </div>
+                        
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        <h2>No hay resultados para la búsqueda <i>'{{ busqueda }}':</i></h2>
+                    {% endif %}
                 </div>
             </div>
             {% endblock %}           
@@ -108,5 +125,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+        
+        <!-- Habilita Popovers Bootstrap -->
+        <script>
+            $(function () {
+                $('[data-toggle="popover"]').popover()
+              })
+        </script>
     </body>
 </html>

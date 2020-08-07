@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS entidades(
     distrito TEXT,
     barrio TEXT,
     horario TEXT,
-    alleNumero TEXT,
+    calleNumero TEXT,
     codigoPostal TEXT,
     municipio TEXT
 );

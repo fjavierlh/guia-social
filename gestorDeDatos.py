@@ -45,7 +45,6 @@ class GestorDeDatos():
                     conexion.executescript(esquemaScript);
                     
         else:
-            print(consulta)
             cursor.execute(consulta)
             conexion.commit()
             conexion.close()
@@ -62,7 +61,7 @@ class GestorDeDatos():
         for entidad in self.datos["@graph"]:
             try:
                 identificador = entidad["id"]
-                nombre = entidad["title"].replace("í", "i")
+                nombre = entidad["title"].replace("'"," ")
                 descripcion = entidad["organization"]["organization-desc"]
                 servicios = entidad["organization"]["services"]
                 coordenadas = entidad["location"]
