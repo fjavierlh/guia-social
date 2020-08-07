@@ -3,6 +3,7 @@
 {% block title %}Registro en Guía Social{% endblock %}
 
 {% block content %}
+<h2>Formulario de registro</h2>
     <div>
         <form action="" method="post" novalidate>
             {{ formularioRegistro.hidden_tag() }}
@@ -10,21 +11,27 @@
                 {{ formularioRegistro.nombre.label }}
                 {{ formularioRegistro.nombre }}<br>
                 {% for error in formularioRegistro.nombre.errors %}
-                <span style="color: red;">{{ error }}</span>
+                <small id="searchHelpInline" class="text-muted d-block">
+                    {{ error }}
+                </small>
                 {% endfor %}
             </div>
             <div>
                 {{ formularioRegistro.correoElectronico.label }}
                 {{ formularioRegistro.correoElectronico }}<br>
                 {% for error in formularioRegistro.correoElectronico.errors %}
-                <span style="color: red;">{{ error }}</span>
+                <small id="searchHelpInline" class="text-muted">
+                    {{ error }}
+                </small>
                 {% endfor %}
             </div>
             <div>
                 {{ formularioRegistro.password.label }}
                 {{ formularioRegistro.password }}<br>
                 {% for error in formularioRegistro.password.errors %}
-                <span style="color: red;">{{ error }}</span>
+                <small id="searchHelpInline" class="text-muted">
+                    {{ error }}
+                </small>
                 {% endfor %}
             </div>
             <div>
