@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block title %}Acceso a Guía Social{% endblock %}
+
+{% block content %}
+<h2>Accede a tu cuenta</h2>
+    <div>
+        <form action="" method="post" novalidate>
+            {{ formularioLogin.hidden_tag() }}
+            <div>
+                {{ formularioLogin.correoElectronico.label }}
+                {{ formularioLogin.correoElectronico }}<br>
+                {% for error in formularioLogin.correoElectronico.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formularioLogin.password.label }}
+                {{ formularioLogin.password }}<br>
+                {% for error in formularioLogin.password.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>{{ formularioLogin.recuerdame() }} {{ formularioLogin.recuerdame.label }}</div>
+            <div>
+                {{ formularioLogin.entrar() }}
+            </div>
+        </form>
+    </div>
+    <div>¿No tienes cuenta? <a href="{{ url_for('registro') }}">Regístrate</a></div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block title %}Registro en Guía Social{% endblock %}
+
+{% block content %}
+    <div>
+        <form action="" method="post" novalidate>
+            {{ formularioRegistro.hidden_tag() }}
+            <div>
+                {{ formularioRegistro.nombre.label }}
+                {{ formularioRegistro.nombre }}<br>
+                {% for error in formularioRegistro.nombre.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formularioRegistro.correoElectronico.label }}
+                {{ formularioRegistro.correoElectronico }}<br>
+                {% for error in formularioRegistro.correoElectronico.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formularioRegistro.password.label }}
+                {{ formularioRegistro.password }}<br>
+                {% for error in formularioRegistro.password.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div>
+                {{ formularioRegistro.registrarme() }}
+            </div>
+        </form>
+    </div>
+{% endblock %}
