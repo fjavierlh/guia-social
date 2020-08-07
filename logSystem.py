@@ -1,5 +1,4 @@
-import config
-
+import settings
 import logging
 from datetime import datetime
 
@@ -12,7 +11,7 @@ def log(opcion, mensaje):
     '''
     opcion = opcion.upper();
 
-    fechaCreacion = datetime.now(config.husoHorario).strftime("%D %H:%M:%S")
+    fechaCreacion = datetime.now(settings.husoHorario).strftime("%D %H:%M:%S")
     mensaje = f"{fechaCreacion} - {mensaje}";
 
     logging.basicConfig(filename='info.log',level=logging.DEBUG);

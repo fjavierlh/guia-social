@@ -1,15 +1,14 @@
-import logSystem
-from config import nombreBD
-from usuario import Usuario
-from gestorDeDatos import GestorDeDatos
-from formularios import Busqueda, LoginApp, FormularioRegistro
+import os
 
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, current_user
 from werkzeug.urls import url_parse
 
-
-import os
+import logSystem
+from settings import nombreBD
+from models.usuario import Usuario
+from models.gestorDeDatos import GestorDeDatos
+from models.formularios import Busqueda, LoginApp, FormularioRegistro
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'ee18abb43892f9b37df141a308e6864c0be4847c83d938324690500dbf0beb55837d0a1ebebd2a367cc1e014d72e9b92e8ff140e47678d60f380b9d5dfd5a000'
@@ -53,7 +52,7 @@ def index():
         WHERE nombre LIKE '{busquedaFormateada}' OR descripcion LIKE '{busquedaFormateada}' OR servicios LIKE '{busquedaFormateada}'
         OR distrito LIKE '{busquedaFormateada}' OR barrio LIKE '{busquedaFormateada}' OR horario LIKE '{busquedaFormateada}'
         OR calleNumero LIKE '{busquedaFormateada}' OR codigoPostal LIKE '{busquedaFormateada}' OR municipio LIKE '{busquedaFormateada}'""")
-
+        
         template = "resultado.html"
 
     return render_template(f"{template}", entidades=entidades, formulario=formulario, busqueda=busqueda)
@@ -65,8 +64,7 @@ def mostrarDetalle(nombre):
 
     coordenadas = eval(entidad[0][4])
     
-    return render_template("detalle.html", entidad=entidad, nombre=nombre, coordenadas=coordenadas, formulario = Busqueda())
-
+    return render_template("detalle.html", entidad=entidad, nombre=nombre, coordenadas=coordenadas, formulario = Busqueda(), GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY"))
 
 @app.route("/registro/", methods=["GET", "POST"])
 def registro():

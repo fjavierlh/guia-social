@@ -4,6 +4,9 @@
 
 {% block content %}
 <h2>Accede a tu cuenta</h2>
+<div class="alert alert-warning" role="alert">
+    Actualmente el servicio de acceso no funciona :( No obstante puedes <a href="{{ url_for('registro') }}">crear tu cuenta ahora mismo</a>, te avisaremos cuando lo tengamos solucionado ;)
+  </div>
     <div>
         <form action="" method="post" novalidate>
             {{ formularioLogin.hidden_tag() }}
@@ -11,14 +14,18 @@
                 {{ formularioLogin.correoElectronico.label }}
                 {{ formularioLogin.correoElectronico }}<br>
                 {% for error in formularioLogin.correoElectronico.errors %}
-                <span style="color: red;">{{ error }}</span>
+                <small id="searchHelpInline" class="text-muted d-block">
+                    {{ error }}
+                </small>
                 {% endfor %}
             </div>
             <div>
                 {{ formularioLogin.password.label }}
                 {{ formularioLogin.password }}<br>
                 {% for error in formularioLogin.password.errors %}
-                <span style="color: red;">{{ error }}</span>
+                <small id="searchHelpInline" class="text-muted d-block">
+                    {{ error }}
+                </small>
                 {% endfor %}
             </div>
             <div>{{ formularioLogin.recuerdame() }} {{ formularioLogin.recuerdame.label }}</div>

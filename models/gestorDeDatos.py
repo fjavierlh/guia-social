@@ -3,10 +3,10 @@ import sqlite3
 import urllib.request
 import os
 
-from config import nombreBD, esquemaDB
+from settings import nombreBD, esquemaDB
 
-from entidad import Entidad
-from usuario import Usuario
+from .entidad import Entidad
+from .usuario import Usuario
 
 import logSystem
 
@@ -45,10 +45,14 @@ class GestorDeDatos():
                     esquemaScript = ficheroSQL.read()
                     conexion.executescript(esquemaScript);
                     
+            logSystem.log("INFO", f"Creada Base de datos ' { nombewBD }'.")
+       
+                    
         else:
             cursor.execute(consulta)
             conexion.commit()
             conexion.close()
+            logSystem.log("INFO", f"Consulta { consulta }' realizada con éxito.")
 
     def consultarDB(self, consulta):
         conexion = sqlite3.connect(nombreBD)
@@ -56,6 +60,7 @@ class GestorDeDatos():
         cursor.execute(consulta)
         salida = cursor.fetchall();
         conexion.close()
+        logSystem.log("INFO", f"Consulta { consulta }' realizada con éxito.")
         return salida;
 
     def crearEntidadesSQL(self): 
@@ -79,12 +84,14 @@ class GestorDeDatos():
             
             except KeyError:
                 logSystem.log("INFO",f"{KeyError}");
-                continue;
-        return logSystem.log("INFO","Entidades creadas con éxito")
+                
+        logSystem.log("INFO","Entidades creadas con éxito")
     
     def getUsuario(self, correoElectronico):
         usuario = self.consultarDB(f'SELECT * FROM usuarios WHERE correoElectronico = "{ correoElectronico };"')
         if usuario:
+            logSystem.log("INFO",f"Usuario { usuario } existe en la base de datos.")
             return usuario
         else:
+            logSystem.log("INFO",f"Usuario { usuario } NO existe en la base de datos.")
             return None
