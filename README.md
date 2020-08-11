@@ -1,10 +1,10 @@
-#Guía Social
+# Guía Social
 
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (Trabajadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.).
 
 Actualmente la aplicación está centada en el municipio de Madrid, pero 
 
-##Instalación:
+## Instalación:
 
 1. Crea un entorno virtual y actívalo.
 2. Instala con pip las dependencias que encontrarás el archivo "requirements.txt" (pip install -r requirements.txt)
@@ -13,7 +13,7 @@ Actualmente la aplicación está centada en el municipio de Madrid, pero
 5. ¡Listo! ¡A trastear con el proyecto! :)
 
 
-##ToDo List:
+## ToDo List:
 
 1. Ampliar base de datos: Incluir información de otras apis de https://datos.madrid.es
 2. Implementar crawler que extraiga datos de contacto de la web de https://madrid.es
