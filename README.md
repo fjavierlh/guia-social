@@ -2,12 +2,25 @@
 
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (Trabajadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.).
 
-Actualmente la aplicación está centada en el municipio de Madrid, pero 
+Actualmente la aplicación está centada en el municipio de Madrid, pero la intención es seguir ampliando la base de datos.
 
 ## Instalación:
 
-1. Crea un entorno virtual y actívalo.
-2. Instala con pip las dependencias que encontrarás el archivo "requirements.txt" (pip install -r requirements.txt)
+1. Para ejecutar el proyecto es necesiario instalar ``pip`` y ``virtualenv`` para crear un entorno virtual y activarlo:
+```
+#Instalación de pip
+sudo apt-get install python3-pip
+
+#Instalación de virtualenv
+sudo pip3 install virtualenv
+
+#Crear entorno virtual
+virtualenv nombre_de_tu_entorno -p python3
+
+#Activar entorno vitual
+source nombre_entorno_virtual/bin/activate
+```
+2. Instala con pip las dependencias que encontrarás el archivo "requirements.txt" con ``pip install -r requirements.txt``
 3. Completa el archivo ".env-example" con tus API Keys y renombralo para que quede como ".env"
 4. Abre el archo ``main.py`` y ejecútalo con el comando ``flask run`` (Al arrancar el servidor de flask por primera vez dale unos segundos, tiene que generar la base de datos SQLite a partir de los datos de la API)
 5. ¡Listo! ¡A trastear con el proyecto! :)
