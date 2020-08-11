@@ -45,7 +45,7 @@ class GestorDeDatos():
                     esquemaScript = ficheroSQL.read()
                     conexion.executescript(esquemaScript);
                     
-            logSystem.log("INFO", f"Creada Base de datos ' { nombewBD }'.")
+            logSystem.log("INFO", f"Creada Base de datos ' { nombreBD }'.")
        
                     
         else:
