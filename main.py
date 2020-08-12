@@ -11,7 +11,7 @@ from models.gestorDeDatos import GestorDeDatos
 from models.formularios import Busqueda, LoginApp, FormularioRegistro
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'ee18abb43892f9b37df141a308e6864c0be4847c83d938324690500dbf0beb55837d0a1ebebd2a367cc1e014d72e9b92e8ff140e47678d60f380b9d5dfd5a000'
+app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 login_manager = LoginManager(app)                  
 
 guiaSocial = GestorDeDatos("https://datos.madrid.es/egob/catalogo/212774-0-atencion-social.json")
