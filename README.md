@@ -1,8 +1,10 @@
 # Guía Social
 
 ![](demo/demo-guia-social.gif)
+<div style="background:#fff;padding:1em;">
+    <img src="demo/flask.svg" width="100"/> 
+</div>
 
-<img src="demo/flask.svg" width="100"/>
 
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (Trabajadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.).
 
