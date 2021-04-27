@@ -2,6 +2,7 @@ import json
 import sqlite3
 import urllib.request
 import os
+from urllib.request import Request
 
 from settings import nombreBD, esquemaDB
 
@@ -12,17 +13,16 @@ import logSystem
 
 class GestorDeDatos():
     def __init__(self, url):
-        self.url = url;
-        self.datos = self.obtenerDatos();
+        self.url = url
+        self.datos = self.obtenerDatos()
     
     def obtenerDatos(self):
         try:
-            with urllib.request.urlopen(self.url) as urlJSON:
+            with urllib.request.urlopen(Request(self.url, headers={'User-Agent': 'Mozilla/5.0'})) as urlJSON:
                 self.datos = json.loads(urlJSON.read().decode())
-                logSystem.log("INFO", "Datos de la API descargados con éxito.");
+                logSystem.log("INFO", "Datos de la API descargados con éxito.")
                   
         except ValueError:
-            #BUSCAR FORMA DE HACER EXCEPCIONES MEDIANTE CODIGO DE ESTADO
             logSystem.log("WARNING", f"Error al descargar el recurso '{url}'.")
 
         return self.datos  
@@ -36,14 +36,14 @@ class GestorDeDatos():
         consulta (default:""): Consulta SQL a realizar;
         crear (default: False): Con valor "True" permite crear una base de datos a partir del archivo "basededatos_esquema.sql"
         '''
-        conexion = sqlite3.connect(nombreBD);
+        conexion = sqlite3.connect(nombreBD)
         cursor = conexion.cursor()
 
         if crear:
             with sqlite3.connect(nombreBD) as conexion:
                 with open(esquemaDB, "rt") as ficheroSQL:
                     esquemaScript = ficheroSQL.read()
-                    conexion.executescript(esquemaScript);
+                    conexion.executescript(esquemaScript)
                     
             logSystem.log("INFO", f"Creada Base de datos ' { nombreBD }'.")
        
