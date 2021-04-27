@@ -5,3 +5,17 @@ body {
 #logo {
     transition: 0.4s;
 }
+
+.nav-item {
+    font-size: 1.2em;
+    padding: 1em 3em;
+    transition: 0.4s;
+}
+
+.nav-item:hover {
+    background-color: #e9ecef;
+}
+
+.nav-item i {
+    margin-right: .5em;
+}
