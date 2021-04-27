@@ -9,10 +9,10 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
           <div>
-            <a class="navbar-brand d-block pt-3 pb-0 mr-5 text-right" style="line-height:1em" href="{{ url_for('index')}}">
-                Guía Social Madrid <br>
+            <a class="navbar-brand d-block pt-3 pb-0 mr-5 text-right" style="line-height:1em" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='img/logo-guia-social.png') }}" alt="Logotipo de guía social" id="logo" class="animate"/><br/>
                 <small id="subtitle" class="text-muted" style="font-size: 60%;">
                     Version Beta
                 </small>
@@ -43,6 +43,7 @@
               </form>
             </div>
         </nav>
+
         <div class="container mt-5">
             {% block content %}
             <div class="jumbotron">
@@ -124,5 +125,17 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+        <script>
+            window.onscroll = function() {changeLogoSize()};
+
+            const changeLogoSize = () => {
+                const logo = document.getElementById("logo");
+                if(document.body.scrollTop > 120 || document.documentElement.scrollTop > 120) {
+                    logo.style.width = "100px";
+                } else {
+                    logo.style.width = "188px";
+                }
+            };
+        </script>
     </body>
 </html>
