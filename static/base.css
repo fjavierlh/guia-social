@@ -1,3 +1,7 @@
 body {
     background-color: #efefefd7;
 }
+
+#logo {
+    transition: 0.4s;
+}
