@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/e2cd1c20a2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     </head>
     <body>
@@ -24,8 +25,17 @@
             </div> 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url_for('acceso')}}">Iniciar sesión <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index')}}">
+                        <i class="fas fa-home"></i>
+                        Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('acceso')}}">
+                        <i class="fas fa-user"></i>
+                        Iniciar sesión
+                    </a>
                 </li>
               </ul>
               
