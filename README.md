@@ -1,16 +1,16 @@
 # Guía Social
 
-[![](demo/demo-guia-social.gif)](#)
+[![Demostración de la app](demo/demo-guia-social.gif)](#guía-social)
 
 ### Descripción
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (Trajadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.)
 Actualmente la aplicación está centada en el municipio de Madrid, pero la intención es seguir ampliando la base de datos.
 
 ### Tecnologías empleadas
-[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg)](#)
-[![Flask](https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg)](#)
-[![Bootstrap](https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg)](#)
-[![SQLite](https://github.com/fjavierlh/fjavierlh/blob/master/img/sqlite.svg)](#)
+[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg)](#tecnologías-empleadas)
+[![Flask](https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg)](#tecnologías-empleadas)
+[![Bootstrap](https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg)](#tecnologías-empleadas)
+[![SQLite](https://github.com/fjavierlh/fjavierlh/blob/master/img/sqlite.svg)](#tecnologías-empleadas)
 
 ## Instalación:
 1. Para ejecutar el proyecto es necesiario instalar ``pip`` y ``virtualenv`` para crear un entorno virtual y activarlo:
