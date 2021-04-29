@@ -33,7 +33,7 @@ source nombre_entorno_virtual/bin/activate
 5. ¡Listo! ¡A trastear con el proyecto! :)
 
 
-## ToDo List:
+## TODO:
 1. Ampliar base de datos: Incluir información de otras apis de https://datos.madrid.es
 2. Implementar crawler que extraiga datos de contacto de la web de https://madrid.es
 3. Añadir funcionalidad que permita actualizar la base de datos.
