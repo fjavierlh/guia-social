@@ -2,9 +2,9 @@
 
 ![](demo/demo-guia-social.gif)
 ### Tecnologías empleadas
-<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg" width="60"/> 
-<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg" width="60"/> 
-<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg" width="60"/> 
+<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg" width="60"/> |
+<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg" width="60"/> |
+<img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg" width="60"/> | 
 <img src="https://github.com/fjavierlh/fjavierlh/blob/master/img/sqlite.svg" width="60"/> 
 
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (flaskjadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.).
