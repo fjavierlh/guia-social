@@ -1,12 +1,12 @@
 # Guía Social
 
-![](demo/demo-guia-social.gif)
+[![](demo/demo-guia-social.gif)](#)
 
 "Guía Social" nace con la ilusión de convertirse en un recurso habitual de las profesionales de entidades y organizaciones del Tercer Sector (flaskjadoras/es Sociales, Educadoras/es, Técnicos de Integración Social, etc.).
 bootstrapActualmente la aplicación está centada en el municipio de Madrid, pero la intención es seguir ampliando la base de datos.
 
 ### Tecnologías empleadas
-[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg)]()
+[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg)](#)
 [![Flask](https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg)](#)
 [![Bootstrap](https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg)](#)
 [![SQLite](https://github.com/fjavierlh/fjavierlh/blob/master/img/sqlite.svg)](#)
