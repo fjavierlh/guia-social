@@ -7,10 +7,10 @@
 Actualmente la aplicación está centada en el municipio de Madrid, pero la intención es seguir ampliando la base de datos.
 
 ### Tecnologías empleadas
-[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/python.svg)](#tecnologías-empleadas)
-[![Flask](https://github.com/fjavierlh/fjavierlh/blob/master/img/flask.svg)](#tecnologías-empleadas)
-[![Bootstrap](https://github.com/fjavierlh/fjavierlh/blob/master/img/bootstrap.svg)](#tecnologías-empleadas)
-[![SQLite](https://github.com/fjavierlh/fjavierlh/blob/master/img/sqlite.svg)](#tecnologías-empleadas)
+[![Python](https://github.com/fjavierlh/fjavierlh/blob/master/img/tech_icons/python.svg)](#tecnologías-empleadas)
+[![Flask](https://github.com/fjavierlh/fjavierlh/blob/master/img/tech_icons/flask.svg)](#tecnologías-empleadas)
+[![Bootstrap](https://github.com/fjavierlh/fjavierlh/blob/master/img/tech_icons/bootstrap.svg)](#tecnologías-empleadas)
+[![SQLite](https://github.com/fjavierlh/fjavierlh/blob/master/img/tech_icons/sqlite.svg)](#tecnologías-empleadas)
 
 ## Instalación:
 1. Para ejecutar el proyecto es necesiario instalar ``pip`` y ``virtualenv`` para crear un entorno virtual y activarlo:
